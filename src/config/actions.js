@@ -3,21 +3,33 @@ export const actions = [
         id: 1,
         name: "Register",
         time: 2,
-        chat: '/reg 12345678 12345678',
+        chat: '/register 12345678 12345678',
     },
     {
         id: 2,
         name: "Login",
         time: 2,
-        chat: '/log 12345678'
+        chat: '/login 12345678'
     },
     {
         id: 3,
-        name: "PostLogin",
+        name: "ConnectFarmrun",
         time: 5,
-        chat: 'Hello !',
+        chat: '/farmrun',
         emit: {
             eventName: 'logged',
         }
+    },
+    {
+        id: 5,
+        name: "CreateIsland",
+        time: 10,
+        chat: '/is new'
+    },
+    {
+        id: 6,
+        name: "IslandGO",
+        time: 13,
+        chat: '/is'
     }
 ]

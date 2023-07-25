@@ -19,9 +19,10 @@ const threadId = process.argv[2];
         auth: "offline",
         version: "1.19.2"
     })
-    bot.loadPlugin(pathfinder)
+    //bot.loadPlugin(pathfinder)
 
     bot.on('chat', (username, message) => {
+        console.log('RCV: ' + message)
         if (username === bot.username) return
         //bot.chat(message)
     })
@@ -37,6 +38,8 @@ const threadId = process.argv[2];
             if (action.emit) bot.emit(action.emit.eventName)
             await sleep(1)
         }
+        await sleep(180);
+        bot.quit();
     })
 
     bot.on('logged', async () => {
