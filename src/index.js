@@ -1,7 +1,9 @@
 import {fork} from "child_process";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 (async () => {
-    const arr = Array.from({ length: 500 }, (_, i) => i + 1);
+    const arr = Array.from({ length: process.env.BOT_COUNT }, (_, i) => i + 1);
     for(const id of arr) {
         console.log('Launching bot #' + id)
         fork('src/bot.js', [id]);
