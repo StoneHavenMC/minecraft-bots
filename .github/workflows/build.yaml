@@ -14,5 +14,5 @@ jobs:
       - name: Build and Push
         run: |
           docker login --username grayr0ot --password ${{secrets.GHCR_PASSWORD}} ghcr.io
-          docker build player-service --tag ghcr.io/grayr0ot/minecraft-bot:${GITHUB_REF##*/}
+          docker build . --tag ghcr.io/grayr0ot/minecraft-bot:${GITHUB_REF##*/}
           docker push ghcr.io/grayr0ot/minecraft-bot:${GITHUB_REF##*/}
