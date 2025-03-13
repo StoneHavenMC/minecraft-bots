@@ -1,0 +1,18 @@
+name: Build project and push images
+
+on:
+  push:
+    branches: [ "*" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build and Push
+        run: |
+          docker login --username grayr0ot --password ${{secrets.GHCR_PASSWORD}} ghcr.io
+          docker build player-service --tag ghcr.io/grayr0ot/minecraft-bot:${GITHUB_REF##*/}
+          docker push ghcr.io/grayr0ot/minecraft-bot:${GITHUB_REF##*/}

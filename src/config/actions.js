@@ -3,7 +3,7 @@ export const actions = [
         id: 1,
         name: "Register",
         time: 2,
-        chat: '/register 12345678 12345678',
+        chat: 'COUCOU',
     },
     {
         id: 2,
@@ -23,13 +23,13 @@ export const actions = [
     {
         id: 5,
         name: "CreateIsland",
-        time: 10,
+        time: 3,
         chat: '/is new'
     },
     {
         id: 6,
         name: "IslandGO",
-        time: 13,
+        time: 3,
         chat: '/is'
     }
 ]
