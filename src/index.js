@@ -8,7 +8,7 @@ dotenv.config();
         console.log('Launching bot #' + id)
         fork('src/bot.js', [id]);
         await new Promise((resolve) => {
-            setTimeout(() => resolve(), 2_500)
+            setTimeout(() => resolve(), 500)
         });
     }
 

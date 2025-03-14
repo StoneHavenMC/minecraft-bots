@@ -13,7 +13,7 @@ let spawn;
 
 (async () => {
     // @ts-ignore
-    const bot = mineflayer.createBot({
+    let bot = mineflayer.createBot({
         host: process.env.SERVER_HOST,
         port: process.env.SERVER_PORT,
         username: process.env.MINECRAFT_USERNAME + randomNameSufix,
@@ -47,8 +47,33 @@ let spawn;
     bot.on('kicked', console.log)
     bot.on('end', console.log)
     bot.on('error', console.log)
+
+    bot.on('kicked', (reason, loggedIn) => {
+        setTimeout(() => {
+            reconnect();
+        }, 30 * 1000);
+    })
+    bot.on('error', (err) => {
+        setTimeout(() => {
+            reconnect();
+        }, 30 * 1000);
+    })
+
+    function reconnect() {
+        bot.end()
+        bot = mineflayer.createBot({
+            host: process.env.SERVER_HOST,
+            port: process.env.SERVER_PORT,
+            username: process.env.MINECRAFT_USERNAME + randomNameSufix,
+            auth: "offline",
+            version: "1.21.4",
+            physicsEnabled: true
+        })
+    }
 })
 ()
+
+
 
 async function walkRandomly(bot) {
     const goal = new goals.GoalNear(
